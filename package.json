@@ -1,0 +1,12 @@
+{
+  "name": "SocketIO-Demo",
+  "description": "socket.io demo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:ak1103dev/SocketIO-Demo.git",
+  "author": "ak1103dev <ak.apichan1103@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
