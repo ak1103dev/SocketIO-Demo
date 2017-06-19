@@ -7,7 +7,8 @@
   "author": "ak1103dev <ak.apichan1103@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "socket.io": "^2.0.3"
   },
   "scripts": {
     "start": "node index.js"
