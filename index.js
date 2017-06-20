@@ -6,12 +6,15 @@ const io = require('socket.io')(http);
 app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 
 io.on('connection', (socket) => {
-  io.emit('chat message', '<a user connected>');
-  // console.log('a user connected');
-  socket.on('disconnect', () => io.emit('chat message', '<user disconnected>'));
+  socket.on('add user', function(username) {
+    socket.username = username;
+    io.emit('chat message', `<${username} connected>`);
+    // console.log('a user connected');
+  })
+  socket.on('disconnect', () => io.emit('chat message', `<${socket.username} disconnected>`));
   // socket.on('disconnect', () => console.log('user disconnected'));
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    io.emit('chat message', `${socket.username} say: ${msg}`);
   });
 });
 

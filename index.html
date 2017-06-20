@@ -21,8 +21,10 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+      const usernames = ['Alpha', 'Beta', 'Theta', 'Gramma'];
       $(function () {
         const socket = io();
+        socket.emit('add user', usernames[Math.round(Math.random() * 3)])
         $('form').submit(() => {
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
