@@ -6,8 +6,10 @@ const io = require('socket.io')(http);
 app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => console.log('user disconnected'));
+  io.emit('chat message', '<a user connected>');
+  // console.log('a user connected');
+  socket.on('disconnect', () => io.emit('chat message', '<user disconnected>'));
+  // socket.on('disconnect', () => console.log('user disconnected'));
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
